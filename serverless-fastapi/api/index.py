@@ -9,6 +9,7 @@ import asyncio
 import time
 
 from fastapi import FastAPI, Query
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
@@ -18,6 +19,8 @@ except ImportError:  # Vercel memuat file ini sebagai script
     import logic  # type: ignore
 
 app = FastAPI(title="Async Serverless Demo", version="1.0.0")
+# Frontend (domain berbeda) hanya perlu GET; API publik tanpa cookie/kredensial.
+app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["GET"], allow_headers=["*"])
 
 
 class TaskResponse(BaseModel):

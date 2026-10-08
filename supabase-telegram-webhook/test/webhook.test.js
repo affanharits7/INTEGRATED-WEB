@@ -26,6 +26,7 @@ async function call({ method = "POST", body = "{}", signature }) {
     setHeader: (k, v) => (out.headers[k] = v),
     status: (c) => ((out.code = c), res),
     json: (j) => ((out.json = j), res),
+    end: () => res,
   };
   await handler(req, res);
   return out;
@@ -34,6 +35,9 @@ async function call({ method = "POST", body = "{}", signature }) {
 const payload = JSON.stringify({ type: "INSERT", table: "orders", schema: "public", record: { id: 1, note: "<b>x</b>" } });
 
 assert.equal((await call({ method: "GET" })).code, 405);
+const pre = await call({ method: "OPTIONS" });
+assert.equal(pre.code, 204, "preflight CORS");
+assert.equal(pre.headers["Access-Control-Allow-Headers"], "Content-Type, x-signature");
 assert.equal((await call({ body: payload })).code, 401, "tanpa signature");
 assert.equal((await call({ body: payload, signature: sign(payload, "salah") })).code, 401, "secret salah");
 assert.equal((await call({ body: payload, signature: "sha256=zz" })).code, 401, "format salah");
