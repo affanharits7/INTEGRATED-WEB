@@ -1,4 +1,13 @@
-import { ArrowRight, Bot, Database, Globe, LayoutDashboard, Send, Server, Webhook } from "lucide-react";
+import {
+  ArrowRight,
+  Bot,
+  Database,
+  Globe,
+  LayoutDashboard,
+  Send,
+  Server,
+  Webhook,
+} from "lucide-react";
 import { Panel, StatusBadge } from "../components/ui";
 
 const Node = ({ icon: Icon, title, sub, tone }) => (
@@ -32,7 +41,9 @@ function ServiceCard({ icon: Icon, name, tech, url, state, endpoints }) {
       <ul className="endpoints">
         {endpoints.map(([method, path]) => (
           <li key={path}>
-            <span className={`method method-${method.toLowerCase()}`}>{method}</span>
+            <span className={`method method-${method.toLowerCase()}`}>
+              {method}
+            </span>
             <code>{path}</code>
           </li>
         ))}
@@ -47,10 +58,11 @@ export default function Overview({ api, hook, apiState, hookState, go }) {
       <div className="hero">
         <div>
           <span className="eyebrow">Serverless · Vercel</span>
-          <h1>Integrated Web</h1>
+          <h1>Integrated Web(Supabase - Vercel - Telegram)</h1>
           <p>
-            Satu dashboard untuk dua layanan serverless: API Python yang membuktikan konkurensi asinkron, dan
-            webhook Node.js yang meneruskan kejadian dari Supabase ke Telegram.
+            Satu dashboard untuk dua layanan serverless: API Python yang
+            membuktikan konkurensi asinkron, dan webhook Node.js yang meneruskan
+            kejadian dari Supabase ke Telegram.
           </p>
           <div className="hero-actions">
             <button className="btn btn-primary" onClick={() => go("ai")}>
@@ -63,16 +75,35 @@ export default function Overview({ api, hook, apiState, hookState, go }) {
         </div>
       </div>
 
-      <Panel icon={LayoutDashboard} title="Arsitektur" description="Alur data antar layanan.">
+      <Panel
+        icon={LayoutDashboard}
+        title="Arsitektur"
+        description="Alur data antar layanan."
+      >
         <div className="flow">
           <Node icon={Globe} title="Frontend" sub="React + Vite" tone="a" />
           <Arrow />
-          <Node icon={Server} title="API FastAPI" sub="Python · asyncio" tone="b" />
+          <Node
+            icon={Server}
+            title="API FastAPI"
+            sub="Python · asyncio"
+            tone="b"
+          />
         </div>
         <div className="flow">
-          <Node icon={Database} title="Supabase" sub="Trigger + pg_net" tone="c" />
+          <Node
+            icon={Database}
+            title="Supabase"
+            sub="Trigger + pg_net"
+            tone="c"
+          />
           <Arrow />
-          <Node icon={Webhook} title="Webhook" sub="Node.js · HMAC-SHA256" tone="a" />
+          <Node
+            icon={Webhook}
+            title="Webhook"
+            sub="Node.js · HMAC-SHA256"
+            tone="a"
+          />
           <Arrow />
           <Node icon={Send} title="Telegram" sub="Bot API" tone="b" />
         </div>
