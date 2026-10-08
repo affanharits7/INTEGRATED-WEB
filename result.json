@@ -1,0 +1,144 @@
+{
+  "target": "http://127.0.0.1:8000",
+  "async": {
+    "endpoint": "/api/async-task",
+    "requests": 10,
+    "delay_per_request_s": 1.0,
+    "total_wall_time_s": 1.006,
+    "serial_estimate_s": 10.0,
+    "overlapping_pairs": "45/45",
+    "distinct_pids": 1,
+    "distinct_threads": 1,
+    "timeline": [
+      {
+        "id": "0e8c2c15",
+        "start": 1791432522.0532,
+        "end": 1791432523.0541
+      },
+      {
+        "id": "dfd3444a",
+        "start": 1791432522.054,
+        "end": 1791432523.0546
+      },
+      {
+        "id": "fe19c952",
+        "start": 1791432522.0543,
+        "end": 1791432523.055
+      },
+      {
+        "id": "e0dc6587",
+        "start": 1791432522.0544,
+        "end": 1791432523.0552
+      },
+      {
+        "id": "0fb4d01f",
+        "start": 1791432522.0544,
+        "end": 1791432523.0553
+      },
+      {
+        "id": "b08f8e24",
+        "start": 1791432522.0544,
+        "end": 1791432523.0555
+      },
+      {
+        "id": "3b7888d3",
+        "start": 1791432522.0544,
+        "end": 1791432523.0561
+      },
+      {
+        "id": "c926280d",
+        "start": 1791432522.0545,
+        "end": 1791432523.0568
+      },
+      {
+        "id": "a221facb",
+        "start": 1791432522.0545,
+        "end": 1791432523.0571
+      },
+      {
+        "id": "9c12d704",
+        "start": 1791432522.0545,
+        "end": 1791432523.0574
+      }
+    ]
+  },
+  "blocking": {
+    "endpoint": "/api/blocking-task",
+    "requests": 10,
+    "delay_per_request_s": 1.0,
+    "total_wall_time_s": 10.011,
+    "serial_estimate_s": 10.0,
+    "overlapping_pairs": "0/45",
+    "distinct_pids": 1,
+    "distinct_threads": 1,
+    "timeline": [
+      {
+        "id": "6fd35d0c",
+        "start": 1791432523.0595,
+        "end": 1791432524.0597
+      },
+      {
+        "id": "e8077760",
+        "start": 1791432524.0613,
+        "end": 1791432525.0615
+      },
+      {
+        "id": "ac8bf4fa",
+        "start": 1791432525.0623,
+        "end": 1791432526.0625
+      },
+      {
+        "id": "ec4c16c1",
+        "start": 1791432526.0632,
+        "end": 1791432527.0633
+      },
+      {
+        "id": "754bd0b4",
+        "start": 1791432527.064,
+        "end": 1791432528.0641
+      },
+      {
+        "id": "af2774f4",
+        "start": 1791432528.0647,
+        "end": 1791432529.065
+      },
+      {
+        "id": "fd2974cd",
+        "start": 1791432529.0657,
+        "end": 1791432530.0659
+      },
+      {
+        "id": "8a30b51b",
+        "start": 1791432530.0664,
+        "end": 1791432531.0666
+      },
+      {
+        "id": "2ae532c1",
+        "start": 1791432531.0671,
+        "end": 1791432532.0673
+      },
+      {
+        "id": "95a3efbd",
+        "start": 1791432532.0679,
+        "end": 1791432533.0681
+      }
+    ]
+  },
+  "fan_out": {
+    "status": "success",
+    "mode": "fan_out",
+    "n": 10,
+    "delay_per_job_s": 1.0,
+    "sequential_estimate_s": 10.0,
+    "actual_total_s": 1.0,
+    "speedup": 10.0,
+    "pid": 412,
+    "thread": 139636531130496
+  },
+  "checks": {
+    "async: total < 2×delay (bukan N×delay)": "PASS",
+    "async: semua interval saling tumpang-tindih": "PASS",
+    "fan_out: speedup > N/2": "PASS",
+    "blocking (1 proses): total ≈ N×delay, tanpa tumpang-tindih": "PASS"
+  }
+}
