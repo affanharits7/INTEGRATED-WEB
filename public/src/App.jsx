@@ -108,7 +108,7 @@ export default function App() {
         <div className="topbar-inner">
           <div className="brand">
             <span className="logo">IW</span>
-            <span>Integrated Web(Supabase - Vercel - Telegram)</span>
+            <span>Integrated Web</span>
           </div>
           <nav className="tabs" aria-label="Navigasi utama">
             {TABS.map(({ id, label, icon: Icon }) => (
