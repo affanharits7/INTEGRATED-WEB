@@ -35,8 +35,8 @@ class TaskResponse(BaseModel):
     thread: int
 
 
-@app.get("/api/health")
-async def health():
+@app.get("/api")
+async def index():
     return {"status": "ok"}
 
 @app.get("/api/proses_ai")
