@@ -2,3 +2,9 @@
 __pycache__/
 .DS_Store
 .vercel/
+node_modules/
+.env
+.env.local
+# salinan lama di root, sudah ada versi terbaru di serverless-fastapi/
+/index.py
+/test_concurrency.py

@@ -1,0 +1,10 @@
+{
+  "name": "supabase-telegram-webhook",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node test/webhook.test.js"
+  }
+}
