@@ -36,7 +36,8 @@ class TaskResponse(BaseModel):
 
 
 @app.get("/api")
-async def index():
+@app.get("/api/health")
+async def health():
     return {"status": "ok"}
 
 @app.get("/api/proses_ai")
