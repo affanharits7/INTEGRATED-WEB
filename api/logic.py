@@ -57,6 +57,18 @@ async def blocking_task(delay: float) -> dict:
     }
 
 
+async def model_a_random_forest(text: str) -> dict:
+    """Simulasi inferensi Model A (Random Forest), latensi 0.3 detik."""
+    await asyncio.sleep(0.3)
+    return {"model": "random_forest", "delay_s": 0.3, "input_length": len(text)}
+
+
+async def model_b_svm(text: str) -> dict:
+    """Simulasi inferensi Model B (SVM), latensi 0.5 detik."""
+    await asyncio.sleep(0.5)
+    return {"model": "svm", "delay_s": 0.5, "input_length": len(text)}
+
+
 async def _sub_job(job_id: int, delay: float) -> dict:
     start = _now()
     await asyncio.sleep(delay)

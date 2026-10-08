@@ -5,6 +5,9 @@ Serverless function FastAPI.
 - AWS Lambda: set handler ke `api.index.handler` (Mangum adapter).
 - Lokal    : uvicorn api.index:app --port 8000
 """
+import asyncio
+import time
+
 from fastapi import FastAPI, Query
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
@@ -32,6 +35,23 @@ class TaskResponse(BaseModel):
 @app.get("/api/health")
 async def health():
     return {"status": "ok"}
+
+@app.get("/api/proses_ai")
+async def proses_ai(input_text: str = Query(..., alias="input", min_length=1)):
+    start = time.time()
+    model_a, model_b = await asyncio.gather(
+        logic.model_a_random_forest(input_text),
+        logic.model_b_svm(input_text),
+    )
+    end = time.time()
+    return {
+        "status": "success",
+        "input": input_text,
+        "results": {"model_a": model_a, "model_b": model_b},
+        "started_at": round(start, 4),
+        "finished_at": round(end, 4),
+        "elapsed_s": round(end - start, 3),  # ≈ 0.5 (paralel), bukan 0.8 (serial)
+    }
 
 
 @app.get("/api/async-task", response_model=TaskResponse)
