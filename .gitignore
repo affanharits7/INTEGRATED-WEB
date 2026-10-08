@@ -8,3 +8,4 @@ node_modules/
 # salinan lama di root, sudah ada versi terbaru di serverless-fastapi/
 /index.py
 /test_concurrency.py
+dist/
