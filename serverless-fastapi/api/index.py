@@ -35,6 +35,10 @@ class TaskResponse(BaseModel):
     thread: int
 
 
+@app.get("/")
+async def index():
+    return {"FE URL": "https://integrated-web-public-fxt9.vercel.app/"}
+
 @app.get("/api")
 @app.get("/api/health")
 async def health():
